@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_material_big_image"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/cl_material_3image">
+
+    <TextView
+        android:id="@+id/tv_big_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:gravity="center_vertical"
+        android:minHeight="30dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="穿山甲，让全球app更有价值" />
+
+    <ImageView
+        android:id="@+id/iv_big_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_big_title" />
+
+    <ImageView
+        android:id="@+id/iv_big_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintRight_toRightOf="@id/iv_big_image"
+        app:layout_constraintTop_toTopOf="@id/iv_big_image" />
+
+
+    <TextView
+        android:id="@+id/tv_big_desc"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#40000000"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="0dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_big_image"
+        tools:text="穿山甲" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

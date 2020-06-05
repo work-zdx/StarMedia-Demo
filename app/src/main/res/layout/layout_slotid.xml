@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_slotid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    android:background="#55ffffff">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/btn_slotid">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_slotid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入SlotID" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_slotid"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="Load" />
+</RelativeLayout>

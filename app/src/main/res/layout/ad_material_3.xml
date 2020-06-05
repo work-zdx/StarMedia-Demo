@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_material_3image"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/cl_material_2image_2text">
+
+    <TextView
+        android:id="@+id/tv_3_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:gravity="center_vertical"
+        android:minHeight="30dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="穿山甲，让全球app更有价值" />
+
+    <ImageView
+        android:id="@+id/iv_3_first"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/iv_3_second"
+        app:layout_constraintTop_toBottomOf="@id/tv_3_title" />
+
+    <ImageView
+        android:id="@+id/iv_3_second"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintLeft_toRightOf="@id/iv_3_first"
+        app:layout_constraintRight_toLeftOf="@id/iv_3_third"
+        app:layout_constraintTop_toBottomOf="@id/tv_3_title" />
+
+    <ImageView
+        android:id="@+id/iv_3_third"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintLeft_toRightOf="@+id/iv_3_second"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_3_title" />
+
+
+    <ImageView
+        android:id="@+id/iv_3_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="@id/iv_3_third"
+        app:layout_constraintRight_toRightOf="@id/iv_3_third" />
+
+    <TextView
+        android:id="@+id/tv_3_platform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_3_first"
+        tools:text="穿山甲" />
+
+    <ImageView
+        android:id="@+id/iv_3_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="2dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_3_first" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
