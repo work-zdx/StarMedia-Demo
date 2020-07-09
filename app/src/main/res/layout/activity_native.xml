@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -103,29 +103,19 @@
 
         </RadioGroup>
 
-        <include
-            android:id="@+id/layout_slotid"
-            layout="@layout/layout_slotid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/radioGroup" />
-
         <FrameLayout
             android:id="@+id/fl_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:minHeight="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constrainedHeight="true"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="w,3:4"
             app:layout_constraintEnd_toStartOf="@+id/line_vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_slotid" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/line_vertical"

@@ -5,8 +5,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.provider.Settings
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -15,7 +13,6 @@ import com.starmedia.adsdk.Logger
 import com.starmedia.adsdk.StarMedia
 import com.starmedia.adsdk.StarSplashView
 import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.android.synthetic.main.layout_slotid.*
 import java.util.*
 
 class SplashActivity : BaseActivity() {
@@ -101,7 +98,7 @@ class SplashActivity : BaseActivity() {
         if (requestCode == REQUEST_PERMISSION) {
             val permission = permissionDenied[0]
             if (grantResults.containsOnly(PackageManager.PERMISSION_GRANTED)) {
-
+                initializeSplashAD()
             } else {
                 if (this.shouldShowPermissionRationale(permission)) {
                     Snackbar.make(
@@ -171,7 +168,7 @@ class SplashActivity : BaseActivity() {
                         .show()
                 }
             } else {
-
+                initializeSplashAD()
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -204,15 +201,9 @@ class SplashActivity : BaseActivity() {
     }
 
 
-    private lateinit var splashHandler: SplashHandler
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        splashHandler = SplashHandler(this)
-
-        initializeSplashAD()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             StarMedia.checkMediaPermission(this) {
@@ -232,8 +223,12 @@ class SplashActivity : BaseActivity() {
                         }
                         .create()
                     alertDialog.show()
+                } else {
+                    initializeSplashAD()
                 }
             }
+        } else {
+            initializeSplashAD()
         }
     }
 
@@ -243,48 +238,43 @@ class SplashActivity : BaseActivity() {
      * 初始化开屏广告
      */
     private fun initializeSplashAD() {
-        txt_slotid.setText(slotid)
 
-        btn_slotid.setOnClickListener {
-            slotid = txt_slotid.text.toString().trim()
 
-            showLoading()
+        showLoading()
 
-            val splashViewGroup = StarSplashView(
-                this, slotid, ll_splash_ad
-            ).apply {
-                requestSuccessListener = {
-                    hideLoading()
-                    ll_splash_ad.addView(this)
-                    Logger.e("SplashActivity", "请求开屏广告成功！")
-                }
+        val splashViewGroup = StarSplashView(
+            this, slotid, ll_splash_ad
+        ).apply {
+            requestSuccessListener = {
+                hideLoading()
+                ll_splash_ad.addView(this)
+                Logger.e("SplashActivity", "请求开屏广告成功！")
+            }
 
-                requestErrorListener = {
-                    hideLoading()
-                    Logger.e("SplashActivity", "请求开屏广告失败：$it")
-                    if (!isFinishing) {
-                        startMainActivity()
-                    }
-                }
-
-                viewShowListener = {
-                    Logger.e("SplashActivity", "开屏广告展示！")
-                    splashHandler.removeMessages(0x80)
-                }
-
-                viewClickListener = {
-                    Logger.e("SplashActivity", "开屏广告点击！")
-                }
-
-                viewCloseListener = {
-                    Logger.e("SplashActivity", "开屏广告关闭！")
-                    if (!isFinishing) {
-                        startMainActivity()
-                    }
+            requestErrorListener = {
+                hideLoading()
+                Logger.e("SplashActivity", "请求开屏广告失败：$it")
+                if (!isFinishing) {
+                    startMainActivity()
                 }
             }
-            splashViewGroup.load()
+
+            viewShowListener = {
+                Logger.e("SplashActivity", "开屏广告展示！")
+            }
+
+            viewClickListener = {
+                Logger.e("SplashActivity", "开屏广告点击！")
+            }
+
+            viewCloseListener = {
+                Logger.e("SplashActivity", "开屏广告关闭！")
+                if (!isFinishing) {
+                    startMainActivity()
+                }
+            }
         }
+        splashViewGroup.load()
     }
 
     /**
@@ -292,17 +282,6 @@ class SplashActivity : BaseActivity() {
      */
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
-        splashHandler.removeCallbacksAndMessages(null)
         finish()
-    }
-
-    private class SplashHandler(var splashActivity: SplashActivity) : Handler() {
-        override fun handleMessage(message: Message) {
-            when (message.what) {
-                0x80 -> {
-                    splashActivity.startMainActivity()
-                }
-            }
-        }
     }
 }

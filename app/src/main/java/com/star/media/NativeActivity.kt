@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.starmedia.adsdk.StarNativeView
 import kotlinx.android.synthetic.main.activity_native.*
-import kotlinx.android.synthetic.main.layout_slotid.*
 
 class NativeActivity : BaseActivity() {
 
@@ -53,13 +52,6 @@ class NativeActivity : BaseActivity() {
                 }
             }
 
-            txt_slotid.setText(slotId)
-        }
-
-        txt_slotid.setText(slotId)
-
-        btn_slotid.setOnClickListener {
-            slotId = txt_slotid.text.toString().trim()
             showLoading()
             starNativeView?.apply {
                 fl_container.removeAllViews()
@@ -100,6 +92,8 @@ class NativeActivity : BaseActivity() {
 
             starNativeView!!.load()
         }
+
+        btn_160.isChecked = true
     }
 
     override fun onDestroy() {

@@ -26,10 +26,10 @@ class StarApplication : MultiDexApplication() {
 //            it.reader().readText()
 //        })
 
-        StarMedia.initialMedia(this, "2370")
+        StarMedia.initialMedia(this, BuildConfig.APP_ID)
 
         val userId = "fc6bcd61-961c-40e4-9d96-552028c859"
-        StarMedia.initialSearch(this, "2370", userId, listOf("88888", "66666"))
+        StarMedia.initialSearch(this, BuildConfig.APP_ID, userId, listOf("88888", "66666"))
     }
 
     private fun initPieWebView() {

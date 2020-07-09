@@ -30,7 +30,6 @@
         tools:replace="android:label">
         <activity android:name=".MaterialActivity"></activity>
         <activity android:name=".JSADActivity" />
-        <activity android:name=".InterstitialActivity" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
@@ -49,7 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RewardedVideoActivity" />
         <activity android:name=".ListVideoActivity" />
         <activity android:name=".ListVideoVPActivity" />
         <activity android:name=".LongVideoActivity" />
